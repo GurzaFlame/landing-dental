@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Белая Улыбка — Редактор конфигурации</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #F8FAFC; color: #1E293B; min-height: 100vh; }
+    .header { background: #fff; border-bottom: 1px solid #E2E8F0; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .header h1 { font-size: 18px; color: #0284C7; }
+    .header-actions { display: flex; gap: 10px; }
+    .btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.2s; }
+    .btn-primary { background: #0284C7; color: #fff; }
+    .btn-primary:hover { background: #0369A1; }
+    .btn-secondary { background: #E2E8F0; color: #1E293B; border: 1px solid #CBD5E1; }
+    .btn-secondary:hover { background: #CBD5E1; }
+    .btn-danger { background: #EF4444; color: #fff; }
+    .container { display: flex; height: calc(100vh - 60px); }
+    .sidebar { width: 220px; background: #fff; border-right: 1px solid #E2E8F0; padding: 16px 0; flex-shrink: 0; }
+    .sidebar button { width: 100%; padding: 12px 20px; background: none; border: none; color: #64748B; text-align: left; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+    .sidebar button:hover { background: #F1F5F9; color: #1E293B; }
+    .sidebar button.active { background: #F1F5F9; color: #0284C7; border-left: 3px solid #0284C7; }
+    .main { flex: 1; overflow-y: auto; padding: 24px; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .section { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .section h2 { font-size: 16px; color: #0284C7; margin-bottom: 16px; }
+    .section h3 { font-size: 14px; color: #64748B; margin: 16px 0 10px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 13px; color: #64748B; margin-bottom: 6px; }
+    .form-group input, .form-group textarea { width: 100%; padding: 10px 12px; background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 8px; color: #1E293B; font-size: 14px; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #0284C7; }
+    .form-group textarea { min-height: 80px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .stat-row { display: grid; grid-template-columns: 1fr 2fr; gap: 14px; align-items: end; margin-bottom: 10px; }
+    .plan-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+    .plan-card .plan-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 10px; }
+    .plan-card .plan-header input { flex: 1; font-size: 16px; font-weight: 600; }
+    .list-item { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px; margin-bottom: 10px; display: flex; gap: 10px; align-items: start; }
+    .list-item input, .list-item textarea { flex: 1; }
+    .list-item .btn-remove { background: #EF4444; color: #fff; border: none; border-radius: 6px; padding: 6px 10px; cursor: pointer; flex-shrink: 0; }
+    .btn-add { background: #F1F5F9; color: #0284C7; border: 1px dashed #CBD5E1; border-radius: 8px; padding: 10px; width: 100%; cursor: pointer; font-size: 14px; margin-top: 10px; }
+    .btn-add:hover { border-color: #0284C7; }
+    .checkbox-group { display: flex; align-items: center; gap: 8px; }
+    .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: #0284C7; }
+    .preview { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-top: 16px; max-height: 400px; overflow-y: auto; }
+    .preview pre { font-family: 'Fira Code', monospace; font-size: 12px; color: #64748B; white-space: pre-wrap; word-break: break-all; }
+    @media (max-width: 768px) {
+      .container { flex-direction: column; }
+      .sidebar { width: 100%; display: flex; overflow-x: auto; padding: 0; }
+      .sidebar button { white-space: nowrap; border-left: none !important; border-bottom: 3px solid transparent; }
+      .sidebar button.active { border-bottom-color: #0284C7; }
+      .form-row, .form-row-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Белая Улыбка — Редактор</h1>
+    <div class="header-actions">
+      <button class="btn btn-secondary" onclick="copyConfig()">Копировать</button>
+      <button class="btn btn-primary" onclick="downloadConfig()">Скачать config.js</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <button class="active" onclick="showTab('company')">Компания</button>
+      <button onclick="showTab('contact')">Контакты</button>
+      <button onclick="showTab('hero')">Hero</button>
+      <button onclick="showTab('pricing')">Услуги</button>
+      <button onclick="showTab('doctors')">Врачи</button>
+      <button onclick="showTab('faq')">FAQ</button>
+      <button onclick="showTab('payment')">Оплата</button>
+      <button onclick="showTab('preview')">Просмотр</button>
+    </div>
+
+    <div class="main">
+      <div class="tab-content active" id="tab-company">
+        <div class="section">
+          <h2>Компания</h2>
+          <div class="form-group"><label>Название</label><input type="text" id="company-name" value="Белая Улыбка" oninput="generatePreview()"></div>
+          <div class="form-group"><label>Слоган</label><input type="text" id="company-slogan" value="Ваша улыбка — наша забота" oninput="generatePreview()"></div>
+          <div class="form-group"><label>Описание</label><textarea id="company-description" oninput="generatePreview()">Современная стоматология в Москве</textarea></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-contact">
+        <div class="section">
+          <h2>Контакты</h2>
+          <div class="form-row">
+            <div class="form-group"><label>Телефон (отображение)</label><input type="text" id="contact-phone" value="+7 (495) 111-22-33" oninput="generatePreview()"></div>
+            <div class="form-group"><label>Телефон (ссылка)</label><input type="text" id="contact-phoneLink" value="+74951112233" oninput="generatePreview()"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email</label><input type="email" id="contact-email" value="info@belayulybka.ru" oninput="generatePreview()"></div>
+            <div class="form-group"><label>WhatsApp</label><input type="text" id="contact-whatsapp" value="74951112233" oninput="generatePreview()"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Telegram</label><input type="text" id="contact-telegram" value="belayulybka_bot" oninput="generatePreview()"></div>
+            <div class="form-group"><label>Адрес</label><input type="text" id="contact-address" value="ул. Пушкина, д. 10, Москва" oninput="generatePreview()"></div>
+          </div>
+          <div class="form-group"><label>Часы работы</label><input type="text" id="contact-workHours" value="Пн-Пт: 9:00-20:00, Сб: 10:00-18:00" oninput="generatePreview()"></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-hero">
+        <div class="section">
+          <h2>Hero-секция</h2>
+          <div class="form-group"><label>Заголовок</label><input type="text" id="hero-headline" value="Безупречная улыбка без боли и страха" oninput="generatePreview()"></div>
+          <div class="form-group"><label>Подзаголовок</label><input type="text" id="hero-subtitle" value="Современная стоматология в Москве" oninput="generatePreview()"></div>
+          <div class="form-group"><label>Текст кнопки</label><input type="text" id="hero-ctaText" value="Записаться на консультацию" oninput="generatePreview()"></div>
+          <h3>Статистика</h3>
+          <div id="stats-container">
+            <div class="stat-row"><div class="form-group"><label>Значение</label><input type="text" class="stat-value" value="15+" oninput="generatePreview()"></div><div class="form-group"><label>Подпись</label><input type="text" class="stat-label" value="лет опыта" oninput="generatePreview()"></div></div>
+            <div class="stat-row"><div class="form-group"><label>Значение</label><input type="text" class="stat-value" value="10 000+" oninput="generatePreview()"></div><div class="form-group"><label>Подпись</label><input type="text" class="stat-label" value="пациентов" oninput="generatePreview()"></div></div>
+            <div class="stat-row"><div class="form-group"><label>Значение</label><input type="text" class="stat-value" value="20+" oninput="generatePreview()"></div><div class="form-group"><label>Подпись</label><input type="text" class="stat-label" value="врачей" oninput="generatePreview()"></div></div>
+            <div class="stat-row"><div class="form-group"><label>Значение</label><input type="text" class="stat-value" value="4.9" oninput="generatePreview()"></div><div class="form-group"><label>Подпись</label><input type="text" class="stat-label" value="рейтинг" oninput="generatePreview()"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-pricing">
+        <div id="services-container"></div>
+        <button class="btn-add" onclick="addService()">+ Добавить услугу</button>
+      </div>
+
+      <div class="tab-content" id="tab-doctors">
+        <div id="doctors-container"></div>
+        <button class="btn-add" onclick="addDoctor()">+ Добавить врача</button>
+      </div>
+
+      <div class="tab-content" id="tab-faq">
+        <div id="faq-container"></div>
+        <button class="btn-add" onclick="addFaq()">+ Добавить вопрос</button>
+      </div>
+
+      <div class="tab-content" id="tab-payment">
+        <div class="section">
+          <h2>Способы оплаты</h2>
+          <div class="form-group"><label>Способы оплаты (через запятую)</label><input type="text" id="payment-methods" value="Карты, СБП, Рассрочка" oninput="generatePreview()"></div>
+          <div class="form-group"><label>Дедлайн (дней для таймера)</label><input type="number" id="payment-deadline" value="0" min="0" oninput="generatePreview()"></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-preview">
+        <div class="section">
+          <h2>Предпросмотр config.js</h2>
+          <div class="preview"><pre id="preview-output"></pre></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const defaultServices = [
+      { name: "Лечение зубов", price: "от 3 000 ₽", description: "Лечение кариеса, пульпита, каналов" },
+      { name: "Имплантация", price: "от 35 000 ₽", description: "Импланты Nobel, Straumann" },
+      { name: "Отбеливание", price: "от 15 000 ₽", description: "Zoom, Air Flow" },
+      { name: "Протезирование", price: "от 8 000 ₽", description: "Коронки, мосты, виниры" },
+      { name: "Хирургия", price: "от 5 000 ₽", description: "Удаление, синус-лифтинг" }
+    ];
+
+    const defaultDoctors = [
+      { name: "Иванов Алексей", specialty: "Терапевт", experience: "15 лет" },
+      { name: "Петрова Елена", specialty: "Ортодонт", experience: "12 лет" },
+      { name: "Сидоров Дмитрий", specialty: "Хирург-имплантолог", experience: "18 лет" }
+    ];
+
+    const defaultFaq = [
+      { question: "Больно ли лечить зубы?", answer: "Мы используем современную анестезию. Лечение абсолютно безболезненно." },
+      { question: "Сколько длится имплантация?", answer: "Установка — 30-40 минут. Восстановление — 3-6 месяцев." },
+      { question: "Есть ли рассрочка?", answer: "Да, беспроцентная рассрочка до 12 месяцев." },
+      { question: "Как записаться?", answer: "Позвоните или заполните форму на сайте." }
+    ];
+
+    let services = JSON.parse(JSON.stringify(defaultServices));
+    let doctors = JSON.parse(JSON.stringify(defaultDoctors));
+    let faqItems = JSON.parse(JSON.stringify(defaultFaq));
+
+    function showTab(id) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      event.target.classList.add('active');
+      if (id === 'preview') generatePreview();
+    }
+
+    function renderServices() {
+      document.getElementById('services-container').innerHTML = services.map((s, i) => `
+        <div class="plan-card">
+          <div class="plan-header">
+            <input type="text" value="${esc(s.name)}" onchange="services[${i}].name=this.value;generatePreview()" placeholder="Название услуги" style="font-size:16px;font-weight:600;">
+            <button class="btn btn-danger" style="padding:6px 12px;font-size:12px;" onclick="removeService(${i})">Удалить</button>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Цена</label><input type="text" value="${esc(s.price)}" onchange="services[${i}].price=this.value;generatePreview()"></div>
+            <div class="form-group"><label>Описание</label><input type="text" value="${esc(s.description)}" onchange="services[${i}].description=this.value;generatePreview()"></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addService() { services.push({ name: "", price: "", description: "" }); renderServices(); generatePreview(); }
+    function removeService(i) { services.splice(i, 1); renderServices(); generatePreview(); }
+
+    function renderDoctors() {
+      document.getElementById('doctors-container').innerHTML = doctors.map((d, i) => `
+        <div class="plan-card">
+          <div class="plan-header">
+            <input type="text" value="${esc(d.name)}" onchange="doctors[${i}].name=this.value;generatePreview()" placeholder="Имя врача" style="font-size:16px;font-weight:600;">
+            <button class="btn btn-danger" style="padding:6px 12px;font-size:12px;" onclick="removeDoctor(${i})">Удалить</button>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Специальность</label><input type="text" value="${esc(d.specialty)}" onchange="doctors[${i}].specialty=this.value;generatePreview()"></div>
+            <div class="form-group"><label>Опыт</label><input type="text" value="${esc(d.experience)}" onchange="doctors[${i}].experience=this.value;generatePreview()"></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addDoctor() { doctors.push({ name: "", specialty: "", experience: "" }); renderDoctors(); generatePreview(); }
+    function removeDoctor(i) { doctors.splice(i, 1); renderDoctors(); generatePreview(); }
+
+    function renderFaq() {
+      document.getElementById('faq-container').innerHTML = faqItems.map((f, i) => `
+        <div class="list-item" style="flex-direction:column;">
+          <div style="display:flex;gap:10px;width:100%;">
+            <input type="text" value="${esc(f.question)}" onchange="faqItems[${i}].question=this.value;generatePreview()" placeholder="Вопрос" style="flex:1;">
+            <button class="btn-remove" onclick="faqItems.splice(${i},1);renderFaq()">×</button>
+          </div>
+          <textarea onchange="faqItems[${i}].answer=this.value;generatePreview()" placeholder="Ответ" style="width:100%;margin-top:8px;">${esc(f.answer)}</textarea>
+        </div>
+      `).join('');
+    }
+
+    function addFaq() { faqItems.push({ question: "", answer: "" }); renderFaq(); generatePreview(); }
+
+    function esc(s) { return String(s).replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+    function getConfig() {
+      return {
+        company: { name: document.getElementById('company-name').value, slogan: document.getElementById('company-slogan').value, description: document.getElementById('company-description').value },
+        contact: { phone: document.getElementById('contact-phone').value, phoneLink: document.getElementById('contact-phoneLink').value, email: document.getElementById('contact-email').value, whatsapp: document.getElementById('contact-whatsapp').value, telegram: document.getElementById('contact-telegram').value, address: document.getElementById('contact-address').value, workHours: document.getElementById('contact-workHours').value },
+        hero: { headline: document.getElementById('hero-headline').value, subtitle: document.getElementById('hero-subtitle').value, ctaText: document.getElementById('hero-ctaText').value, stats: Array.from(document.querySelectorAll('#stats-container .stat-row')).map(row => ({ value: row.querySelector('.stat-value').value, label: row.querySelector('.stat-label').value })) },
+        services: services, doctors: doctors, faq: faqItems,
+        payment: { methods: document.getElementById('payment-methods').value.split(',').map(s => s.trim()).filter(Boolean), deadline: parseInt(document.getElementById('payment-deadline').value) || 0 }
+      };
+    }
+
+    function jsString(obj, indent) {
+      indent = indent || 0; const pad = '  '.repeat(indent); const pad1 = '  '.repeat(indent + 1);
+      if (Array.isArray(obj)) { if (obj.length === 0) return '[]'; if (typeof obj[0] === 'string') return '[\n' + obj.map(s => pad1 + '"' + s.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"').join(',\n') + '\n' + pad + ']'; return '[\n' + obj.map(item => pad1 + jsString(item, indent + 1)).join(',\n') + '\n' + pad + ']'; }
+      if (typeof obj === 'object' && obj !== null) { const keys = Object.keys(obj); if (keys.length === 0) return '{}'; return '{\n' + keys.map(k => { const v = obj[k]; const val = typeof v === 'string' ? '"' + v.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"' : typeof v === 'number' ? v : typeof v === 'boolean' ? v : jsString(v, indent + 1); return pad1 + k + ': ' + val; }).join(',\n') + '\n' + pad + '}'; }
+      return String(obj);
+    }
+
+    function generateConfigString() {
+      const config = getConfig();
+      return `// ============================================================\n// CONFIG.JS — РЕДАКТОР КОНТЕНТА\n// ============================================================\n\nconst CONFIG = ${jsString(config, 0)};\n`;
+    }
+
+    function generatePreview() { const el = document.getElementById('preview-output'); if (!el) return; el.textContent = generateConfigString(); }
+    function downloadConfig() { const blob = new Blob([generateConfigString()], { type: 'text/javascript' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'config.js'; a.click(); URL.revokeObjectURL(a.href); }
+    function copyConfig() { navigator.clipboard.writeText(generateConfigString()).then(() => { const btn = event.target; const orig = btn.textContent; btn.textContent = 'Скопировано!'; setTimeout(() => btn.textContent = orig, 2000); }); }
+
+    renderServices(); renderDoctors(); renderFaq(); generatePreview();
+  </script>
+</body>
+</html>
