@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Белая Улыбка — Стоматология в Москве</title>
+  <meta name="description" content="Современная стоматология. Лечение, имплантация, отбеливание с гарантией.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Белая Улыбка — Стоматология в Москве">
+  <meta property="og:description" content="Современная стоматология. Лечение, имплантация, отбеливание с гарантией.">
+  <meta property="og:type" content="website">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://example.com/landing-dental/">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Белая Улыбка",
+    "description": "Современная стоматология. Лечение, имплантация, отбеливание с гарантией.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Примерная, д. 42",
+      "addressLocality": "Москва",
+      "addressCountry": "RU"
+    },
+    "telephone": "+7-495-123-45-67",
+    "openingHours": "Mo-Fr 09:00-21:00, Sa-Su 10:00-18:00"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo">
+        <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2C11.5 2 8 5.5 8 9c0 2.5 1 4 2 5.5C11 16 12 18 12 20c0 2-1 4-2 6-.5 1 .2 2 1.2 2 2 0 4-1.5 5-3 .8-1.2 1.5-2.8 1.8-5 .3-2.2.5-4 .5-4s.2 1.8.5 4c.3 2.2 1 3.8 1.8 5 1 1.5 3 3 5 3 1 0 1.7-1 1.2-2-1-2-2-4-2-6 0-2 1-4 2-5.5C23 13 24 11.5 24 9c0-3.5-3.5-7-8-7z" fill="url(#tooth-grad)"/>
+          <defs><linearGradient id="tooth-grad" x1="8" y1="2" x2="24" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#0077B6"/><stop offset="1" stop-color="#00B4D8"/></linearGradient></defs>
+        </svg>
+        Белая Улыбка
+      </a>
+      <ul class="nav__links">
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#doctors">Врачи</a></li>
+        <li><a href="#results">Результаты</a></li>
+        <li><a href="#pricing">Цены</a></li>
+        <li><a href="#faq">Вопросы</a></li>
+      </ul>
+      <a href="#booking" class="btn btn--primary nav__cta">Записаться</a>
+      <button class="nav__burger" id="navBurger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="navMobile">
+      <ul>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#doctors">Врачи</a></li>
+        <li><a href="#results">Результаты</a></li>
+        <li><a href="#pricing">Цены</a></li>
+        <li><a href="#faq">Вопросы</a></li>
+        <li><a href="#booking" class="btn btn--primary">Записаться</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" style="background: linear-gradient(180deg, rgba(248,250,252,0.9) 0%, rgba(240,247,250,0.95) 50%, rgba(224,242,254,0.85) 100%), url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1600&h=900&fit=crop') center/cover no-repeat;">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <div class="hero__badge">Стоматология в Москве</div>
+        <h1 class="hero__title">Ваша улыбка — <span class="text-gradient">наша забота</span></h1>
+        <p class="hero__subtitle">Современная клиника с опытными специалистами. Гарантия на все виды лечения до 10 лет. Бесплатная консультация и план лечения за 1 визит.</p>
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <strong>12+</strong>
+            <span>Лет опыта</span>
+          </div>
+          <div class="hero__stat">
+            <strong>15 000+</strong>
+            <span>Довольных пациентов</span>
+          </div>
+          <div class="hero__stat">
+            <strong>98%</strong>
+            <span>Положительных отзывов</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__form-wrap">
+        <form action="https://formsubmit.co/YOUR_EMAIL@email.com" method="POST" class="hero-form glass-card" id="heroForm">
+          <input type="hidden" name="_subject" value="Новая заявка — Белая Улыбка">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://example.com/landing-dental/">
+          <h3>Бесплатная консультация</h3>
+          <p>Оставьте заявку и мы перезвоним в течение 15 минут</p>
+          <div class="form-group">
+            <input type="text" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Телефон" required>
+          </div>
+          <div class="form-group">
+            <select>
+              <option value="">Интересующая услуга</option>
+              <option>Лечение зубов</option>
+              <option>Имплантация</option>
+              <option>Отбеливание</option>
+              <option>Хирургия</option>
+              <option>Протезирование</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Записаться бесплатно</button>
+          <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES BENTO -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Наши услуги</span>
+        <h2>Полный спектр <span class="text-gradient">стоматологических услуг</span></h2>
+        <p>Используем современное оборудование и проверенные материалы</p>
+      </div>
+      <div class="bento">
+        <div class="bento__card glass-card reveal" data-delay="0">
+          <div class="bento__icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#0077B6" opacity="0.1"/><path d="M24 12c-3 0-5 2-5 5s1 3 2 5l3 8 3-8c1-2 2-3 2-5s-2-5-5-5z" stroke="#0077B6" stroke-width="2" fill="none"/><line x1="20" y1="34" x2="28" y2="34" stroke="#00B4D8" stroke-width="2"/><line x1="18" y1="37" x2="30" y2="37" stroke="#00B4D8" stroke-width="2"/></svg>
+          </div>
+          <h3>Лечение зубов</h3>
+          <p>Кариес, пульпит, каналы. Безболезненно с анестезией нового поколения.</p>
+          <div class="bento__price">от <strong>3 500 ₽</strong></div>
+        </div>
+        <div class="bento__card glass-card reveal" data-delay="100">
+          <div class="bento__icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#00B4D8" opacity="0.1"/><rect x="20" y="10" width="8" height="16" rx="4" stroke="#00B4D8" stroke-width="2" fill="none"/><line x1="24" y1="26" x2="24" y2="38" stroke="#0077B6" stroke-width="2"/><circle cx="24" cy="14" r="2" fill="#00B4D8"/></svg>
+          </div>
+          <h3>Имплантация</h3>
+          <p>Импланты премиум-класса. Восстановление за 1 день с временным протезом.</p>
+          <div class="bento__price">от <strong>35 000 ₽</strong></div>
+        </div>
+        <div class="bento__card glass-card reveal" data-delay="200">
+          <div class="bento__icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#0077B6" opacity="0.1"/><path d="M16 28c0-4 3-8 8-8s8 4 8 8" stroke="#0077B6" stroke-width="2" fill="none"/><circle cx="24" cy="20" r="6" stroke="#00B4D8" stroke-width="2" fill="none"/><path d="M21 20l2 2 4-4" stroke="#0077B6" stroke-width="2"/></svg>
+          </div>
+          <h3>Отбеливание</h3>
+          <p>Профессиональное отбеливание Zoom. Результат до 12 оттенков за 1 час.</p>
+          <div class="bento__price">от <strong>12 000 ₽</strong></div>
+        </div>
+        <div class="bento__card glass-card reveal" data-delay="300">
+          <div class="bento__icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#00B4D8" opacity="0.1"/><path d="M18 14l6 10 6-10" stroke="#0077B6" stroke-width="2" fill="none"/><line x1="24" y1="24" x2="24" y2="36" stroke="#00B4D8" stroke-width="2"/><circle cx="18" cy="38" r="2" fill="#0077B6"/><circle cx="30" cy="38" r="2" fill="#0077B6"/></svg>
+          </div>
+          <h3>Хирургия</h3>
+          <p>Удаление, синус-лифтинг, костная пластика. Минимальная травматичность.</p>
+          <div class="bento__price">от <strong>5 000 ₽</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section class="doctors" id="doctors">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Наша команда</span>
+        <h2>Врачи с <span class="text-gradient">высшей категорией</span></h2>
+        <p>Сертифицированные специалисты с опытом более 10 лет</p>
+      </div>
+      <div class="doctors__grid">
+        <div class="doctor-card glass-card reveal" data-delay="0">
+          <div class="doctor-card__photo">
+            <div class="doctor-card__avatar" style="background: linear-gradient(135deg, #0077B6, #00B4D8); overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face" alt="Алексей Иванов" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+          </div>
+          <div class="doctor-card__info">
+            <h3>Алексей Иванов</h3>
+            <span class="doctor-card__spec">Главный врач, ортодонт</span>
+            <p>Стаж 18 лет. Специализация: имплантация, протезирование. Высшая категория.</p>
+          </div>
+        </div>
+        <div class="doctor-card glass-card reveal" data-delay="100">
+          <div class="doctor-card__photo">
+            <div class="doctor-card__avatar" style="background: linear-gradient(135deg, #00B4D8, #48CAE4); overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face" alt="Елена Петрова" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+          </div>
+          <div class="doctor-card__info">
+            <h3>Елена Петрова</h3>
+            <span class="doctor-card__spec">Терапевт, эндодонтист</span>
+            <p>Стаж 14 лет. Специализация: лечение каналов, эстетическая реставрация.</p>
+          </div>
+        </div>
+        <div class="doctor-card glass-card reveal" data-delay="200">
+          <div class="doctor-card__photo">
+            <div class="doctor-card__avatar" style="background: linear-gradient(135deg, #0077B6, #023E8A); overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=400&fit=crop&crop=face" alt="Михаил Козлов" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+          </div>
+          <div class="doctor-card__info">
+            <h3>Михаил Козлов</h3>
+            <span class="doctor-card__spec">Хирург-имплантолог</span>
+            <p>Стаж 16 лет. Специализация: зубная хирургия, костная пластика, синус-лифтинг.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="results" id="results">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Наши результаты</span>
+        <h2>До и <span class="text-gradient">после лечения</span></h2>
+        <p>Реальные фотографии наших пациентов (с их согласия)</p>
+      </div>
+      <div class="ba-gallery">
+        <div class="ba-card glass-card reveal" data-delay="0">
+          <div class="ba-slider" data-before="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=300&fit=crop" data-after="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=300&fit=crop&auto=format">
+            <div class="ba-slider__before">
+              <div class="ba-placeholder ba-placeholder--before">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=300&fit=crop" alt="До отбеливания" style="width:100%;height:100%;object-fit:cover;">
+                <span>До</span>
+              </div>
+            </div>
+            <div class="ba-slider__after">
+              <div class="ba-placeholder ba-placeholder--after">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&h=300&fit=crop" alt="После отбеливания" style="width:100%;height:100%;object-fit:cover;">
+                <span>После</span>
+              </div>
+            </div>
+            <div class="ba-slider__handle">
+              <div class="ba-slider__line"></div>
+              <div class="ba-slider__circle">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7" stroke="#fff" stroke-width="2"/></svg>
+              </div>
+            </div>
+          </div>
+          <h4>Отбеливание зубов</h4>
+          <p>Процедура Zoom 4 — результат за 1 час</p>
+        </div>
+        <div class="ba-card glass-card reveal" data-delay="100">
+          <div class="ba-slider">
+            <div class="ba-slider__before">
+              <div class="ba-placeholder ba-placeholder--before">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=300&fit=crop" alt="До имплантации" style="width:100%;height:100%;object-fit:cover;">
+                <span>До</span>
+              </div>
+            </div>
+            <div class="ba-slider__after">
+              <div class="ba-placeholder ba-placeholder--after">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=300&fit=crop&auto=format" alt="После имплантации" style="width:100%;height:100%;object-fit:cover;">
+                <span>После</span>
+              </div>
+            </div>
+            <div class="ba-slider__handle">
+              <div class="ba-slider__line"></div>
+              <div class="ba-slider__circle">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7" stroke="#fff" stroke-width="2"/></svg>
+              </div>
+            </div>
+          </div>
+          <h4>Имплантация зубов</h4>
+          <p>2 импланта Nobel Biocare — полное восстановление</p>
+        </div>
+        <div class="ba-card glass-card reveal" data-delay="200">
+          <div class="ba-slider">
+            <div class="ba-slider__before">
+              <div class="ba-placeholder ba-placeholder--before">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&h=300&fit=crop&auto=format" alt="До виниров" style="width:100%;height:100%;object-fit:cover;">
+                <span>До</span>
+              </div>
+            </div>
+            <div class="ba-slider__after">
+              <div class="ba-placeholder ba-placeholder--after">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=300&fit=crop&auto=format" alt="После виниров" style="width:100%;height:100%;object-fit:cover;">
+                <span>После</span>
+              </div>
+            </div>
+            <div class="ba-slider__handle">
+              <div class="ba-slider__line"></div>
+              <div class="ba-slider__circle">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7" stroke="#fff" stroke-width="2"/></svg>
+              </div>
+            </div>
+          </div>
+          <h4>Виниры</h4>
+          <p>8 керамических виниров — голливудская улыбка</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Прайс-лист</span>
+        <h2>Прозрачные <span class="text-gradient">цены без сюрпризов</span></h2>
+        <p>Фиксированная стоимость. Рассрочка 0% на 12 месяцев.</p>
+      </div>
+      <div class="pricing__grid">
+        <div class="pricing-card glass-card reveal" data-delay="0">
+          <h3>Терапия</h3>
+          <ul class="pricing-card__list">
+            <li><span>Консультация + план</span><strong>Бесплатно</strong></li>
+            <li><span>Лечение кариеса</span><strong>от 3 500 ₽</strong></li>
+            <li><span>Лечение пульпита</span><strong>от 8 000 ₽</strong></li>
+            <li><span>Реставрация зуба</span><strong>от 5 000 ₽</strong></li>
+            <li><span>Отбеливание Zoom</span><strong>12 000 ₽</strong></li>
+          </ul>
+          <a href="#booking" class="btn btn--outline btn--full">Записаться</a>
+        </div>
+        <div class="pricing-card glass-card pricing-card--featured reveal" data-delay="100">
+          <div class="pricing-card__badge">Популярное</div>
+          <h3>Имплантация</h3>
+          <ul class="pricing-card__list">
+            <li><span>Консультация + КТ</span><strong>Бесплатно</strong></li>
+            <li><span>Имплант Nobel Biocare</span><strong>35 000 ₽</strong></li>
+            <li><span>Имплант Straumann</span><strong>42 000 ₽</strong></li>
+            <li><span>Коронка на импланте</span><strong>от 15 000 ₽</strong></li>
+            <li><span>All-on-4 (на 4 имплантах)</span><strong>от 250 000 ₽</strong></li>
+          </ul>
+          <a href="#booking" class="btn btn--primary btn--full">Записаться</a>
+        </div>
+        <div class="pricing-card glass-card reveal" data-delay="200">
+          <h3>Хирургия</h3>
+          <ul class="pricing-card__list">
+            <li><span>Простое удаление</span><strong>от 3 000 ₽</strong></li>
+            <li><span>Сложное удаление</span><strong>от 6 000 ₽</strong></li>
+            <li><span>Ретинированный зуб</span><strong>от 12 000 ₽</strong></li>
+            <li><span>Синус-лифтинг</span><strong>от 25 000 ₽</strong></li>
+            <li><span>Костная пластика</span><strong>от 18 000 ₽</strong></li>
+          </ul>
+          <a href="#booking" class="btn btn--outline btn--full">Записаться</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Отзывы</span>
+        <h2>Что говорят <span class="text-gradient">наши пациенты</span></h2>
+      </div>
+      <div class="testimonials__grid">
+        <div class="testimonial-card glass-card reveal" data-delay="0">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p>«Долго боялась идти к стоматологу, но в «Белой Улыбке» все прошло абсолютно безболезненно. Импланты поставили за одно посещение, а через неделю я уже забыла, что они там. Очень довольна!»</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background: linear-gradient(135deg, #0077B6, #00B4D8); overflow: hidden;"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Анна" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+            <div>
+              <strong>Анна Смирнова</strong>
+              <span>Имплантация, 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass-card reveal" data-delay="100">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p>«Привел дочку на лечение кариеса — она даже не заплакала! Доктор Петрова нашла подход к ребенку. Теперь ходим всей семьей. Спасибо за профессионализм и заботу!»</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background: linear-gradient(135deg, #00B4D8, #48CAE4); overflow: hidden;"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Дмитрий" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+            <div>
+              <strong>Дмитрий Волков</strong>
+              <span>Лечение зубов, 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass-card reveal" data-delay="200">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p>«Делала отбеливание Zoom — результат потрясающий! Зубы стали на 10 оттенков светлее. Процедура длилась около часа, без дискомфорта. Рекомендую всем подругам!»</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background: linear-gradient(135deg, #023E8A, #0077B6); overflow: hidden;"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face" alt="Ольга" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+            <div>
+              <strong>Ольга Михайлова</strong>
+              <span>Отбеливание, 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Вопросы</span>
+        <h2>Часто задаваемые <span class="text-gradient">вопросы</span></h2>
+      </div>
+      <div class="faq__list">
+        <div class="faq-item glass-card reveal" data-delay="0">
+          <button class="faq-item__question">
+            <span>Больно ли лечить зубы в вашей клинике?</span>
+            <svg class="faq-item__arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Мы используем анестезию нового поколения, которая обеспечивает полное обезболивание. Пациент не чувствует боли во время процедуры. Для детей применяем специальные гели с приятным вкусом.</p>
+          </div>
+        </div>
+        <div class="faq-item glass-card reveal" data-delay="50">
+          <button class="faq-item__question">
+            <span>Какой срок службы имплантов?</span>
+            <svg class="faq-item__arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Современные импланты (Nobel Biocare, Straumann) служат от 20 лет и более при правильном уходе. Мы даем пожизненную гарантию на сами импланты и 5 лет — на коронки.</p>
+          </div>
+        </div>
+        <div class="faq-item glass-card reveal" data-delay="100">
+          <button class="faq-item__question">
+            <span>Можно ли оплатить лечение в рассрочку?</span>
+            <svg class="faq-item__arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Да, мы предоставляем рассрочку 0% на срок до 12 месяцев через банков-партнеров. Также доступны беспроцветные кредиты до 36 месяцев. Подробности уточняйте у администратора.</p>
+          </div>
+        </div>
+        <div class="faq-item glass-card reveal" data-delay="150">
+          <button class="faq-item__question">
+            <span>Сколько времени занимает установка импланта?</span>
+            <svg class="faq-item__arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Установка одного импланта занимает от 20 до 40 минут. Процедура проводится под местной анестезией. В тот же день ставится временный протез, чтобы вы не ходили без зуба.</p>
+          </div>
+        </div>
+        <div class="faq-item glass-card reveal" data-delay="200">
+          <button class="faq-item__question">
+            <span>Нужно ли делать снимок перед визитом?</span>
+            <svg class="faq-item__arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Нет, всё необходимое оборудование есть в клинике. Мы делаем цифровой снимок (панорамный или КТ) прямо на первом приеме — это бесплатно и занимает несколько секунд.</p>
+          </div>
+        </div>
+        <div class="faq-item glass-card reveal" data-delay="250">
+          <button class="faq-item__question">
+            <span>Как часто нужно проходить профилактический осмотр?</span>
+            <svg class="faq-item__arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Рекомендуем посещать стоматолога раз в 6 месяцев. Профессиональная чистка + осмотр позволяют выявить проблемы на ранней стадии и избежать дорогостоящего лечения.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-section" id="map">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Как нас найти</span>
+        <h2>Наша <span class="text-gradient">клиника</span></h2>
+        <p>Москва, ул. Примерная, д. 42, метро Белорусская</p>
+      </div>
+      <div class="map-container glass-card reveal">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=37.587093%2C55.755814&z=15&pt=37.587093%2C55.755814%2Cpm2rdm&lang=ru_RU" width="100%" height="450" frameborder="0" allowfullscreen="true" title="Карта проезда"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="booking__inner">
+        <div class="booking__content">
+          <span class="section-tag">Запишитесь</span>
+          <h2>Запишитесь на <span class="text-gradient">бесплатную консультацию</span></h2>
+          <p>Оставьте заявку и мы перезвоним в течение 15 минут для уточнения деталей и выбора удобного времени.</p>
+          <div class="booking__features">
+            <div class="booking__feature">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#00B4D8" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#00B4D8" stroke-width="2"/></svg>
+              <span>Бесплатный осмотр + план лечения</span>
+            </div>
+            <div class="booking__feature">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#00B4D8" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#00B4D8" stroke-width="2"/></svg>
+              <span>Цифровой снимок на месте</span>
+            </div>
+            <div class="booking__feature">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#00B4D8" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#00B4D8" stroke-width="2"/></svg>
+              <span>Рассрочка 0% до 12 месяцев</span>
+            </div>
+          </div>
+        </div>
+        <form action="https://formsubmit.co/YOUR_EMAIL@email.com" method="POST" class="booking-form glass-card" id="bookingForm">
+          <input type="hidden" name="_subject" value="Запись на консультацию — Белая Улыбка">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://example.com/landing-dental/">
+          <h3>Оставьте заявку</h3>
+          <div class="form-group">
+            <input type="text" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Телефон" required>
+          </div>
+          <div class="form-group">
+            <select>
+              <option value="">Выберите услугу</option>
+              <option>Лечение зубов</option>
+              <option>Имплантация</option>
+              <option>Отбеливание</option>
+              <option>Хирургия</option>
+              <option>Протезирование</option>
+              <option>Профилактика</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="date" placeholder="Желаемая дата">
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Комментарий (необязательно)" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Записаться бесплатно</button>
+          <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__about">
+          <a href="#" class="nav__logo">
+            <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none"><path d="M16 2C11.5 2 8 5.5 8 9c0 2.5 1 4 2 5.5C11 16 12 18 12 20c0 2-1 4-2 6-.5 1 .2 2 1.2 2 2 0 4-1.5 5-3 .8-1.2 1.5-2.8 1.8-5 .3-2.2.5-4 .5-4s.2 1.8.5 4c.3 2.2 1 3.8 1.8 5 1 1.5 3 3 5 3 1 0 1.7-1 1.2-2-1-2-2-4-2-6 0-2 1-4 2-5.5C23 13 24 11.5 24 9c0-3.5-3.5-7-8-7z" fill="url(#tooth-grad2)"/><defs><linearGradient id="tooth-grad2" x1="8" y1="2" x2="24" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#0077B6"/><stop offset="1" stop-color="#00B4D8"/></linearGradient></defs></svg>
+            Белая Улыбка
+          </a>
+          <p>Современная стоматология в центре Москвы. Качественное лечение по доступным ценам.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Услуги</h4>
+          <ul>
+            <li><a href="#services">Лечение зубов</a></li>
+            <li><a href="#services">Имплантация</a></li>
+            <li><a href="#services">Отбеливание</a></li>
+            <li><a href="#services">Хирургия</a></li>
+            <li><a href="#services">Протезирование</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Клиника</h4>
+          <ul>
+            <li><a href="#doctors">Наши врачи</a></li>
+            <li><a href="#results">Результаты</a></li>
+            <li><a href="#pricing">Прайс-лист</a></li>
+            <li><a href="#faq">Вопросы и ответы</a></li>
+            <li><a href="#map">Контакты и проезд</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Контакты</h4>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="#00B4D8" stroke-width="2"/></svg>
+              <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#00B4D8" stroke-width="2"/><path d="M22 6l-10 7L2 6" stroke="#00B4D8" stroke-width="2"/></svg>
+              <a href="mailto:info@belayaulybka.ru">info@belayaulybka.ru</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><circle cx="12" cy="12" r="10" stroke="#00B4D8" stroke-width="2"/><path d="M12 6v6l4 2" stroke="#00B4D8" stroke-width="2"/></svg>
+              <span>Пн-Пт: 9:00 — 21:00<br>Сб-Вс: 10:00 — 18:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Стоматология «Белая Улыбка». Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
